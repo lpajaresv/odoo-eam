@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-29 23:06+0000\n"
-"PO-Revision-Date: 2015-10-29 23:06+0000\n"
+"POT-Creation-Date: 2019-05-27 03:13+0000\n"
+"PO-Revision-Date: 2019-05-27 03:13+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,53 +16,147 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: mro
-#: field:asset.asset,mro_count:0
+#: model:ir.model.fields,field_description:mro.field_asset_asset__mro_count
 msgid "# Maintenance"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_request
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
 msgid "(Breakdown)"
 msgstr ""
 
 #. module: mro
-#: field:mro.task,active:0
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
+msgid "<strong>Asset:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
+msgid "<strong>Cause:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Description:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Description</strong>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
+msgid "<strong>Execution Date:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Maintenance Type:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Planned Date:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Planned Parts</strong>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
+msgid "<strong>Printing date:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Product</strong>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Quantity</strong>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
+msgid "<strong>Requested Date:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Scheduled Date:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+msgid "<strong>Source Document:</strong><br/>"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_needaction
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_needaction
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_task__active
 msgid "Active"
 msgstr ""
 
 #. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_state
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_state
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: mro
 #: model:ir.model,name:mro.model_asset_asset
-#: view:mro.order:mro.mro_order_search
-#: field:mro.order,asset_id:0
-#: field:mro.request,asset_id:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__asset_id
+#: model:ir.model.fields,field_description:mro.field_mro_request__asset_id
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
 msgid "Asset"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,category_ids:0
-#: field:mro.task,category_id:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__category_ids
+#: model:ir.model.fields,field_description:mro.field_mro_task__category_id
 msgid "Asset Category"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-#: view:website:mro.report_mro_request
-msgid "Asset:"
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_attachment_count
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_attachment_count
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_attachment_count
+msgid "Attachment Count"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Available Parts"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Bill Of Material"
 msgstr ""
 
 #. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_request__breakdown
 #: selection:mro.order,maintenance_type:0
-#: field:mro.request,breakdown:0
 msgid "Breakdown"
 msgstr ""
 
@@ -72,10 +166,16 @@ msgid "CANCELED"
 msgstr ""
 
 #. module: mro
-#: view:mro.convert.order:mro.view_convert_order
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.request:mro.mro_request_form_view
-#: view:mro.request.reject:mro.view_request_reject_wizard
+#: model:ir.model.fields,field_description:mro.field_product_product__isParts
+#: model:ir.model.fields,field_description:mro.field_product_template__isParts
+msgid "Can be Part"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
+#: model_terms:ir.ui.view,arch_db:mro.view_convert_order
+#: model_terms:ir.ui.view,arch_db:mro.view_request_reject_wizard
 msgid "Cancel"
 msgstr ""
 
@@ -85,13 +185,8 @@ msgid "Canceled"
 msgstr ""
 
 #. module: mro
-#: field:mro.request,cause:0
+#: model:ir.model.fields,field_description:mro.field_mro_request__cause
 msgid "Cause"
-msgstr ""
-
-#. module: mro
-#: view:website:mro.report_mro_request
-msgid "Cause:"
 msgstr ""
 
 #. module: mro
@@ -100,25 +195,31 @@ msgid "Claim"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,company_id:0
+#: model_terms:ir.actions.act_window,help:mro.part_action
+msgid "Click to define a new spare part."
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__company_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__company_id
 msgid "Company"
 msgstr ""
 
 #. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 #: model:mail.message.subtype,name:mro.mt_order_confirmed
-#: view:mro.order:mro.mro_order_form_view
 msgid "Confirm Maintenance"
 msgstr ""
 
 #. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
 #: model:mail.message.subtype,name:mro.mt_asset_request_confirmed
 #: model:mail.message.subtype,name:mro.mt_request_confirmed
-#: view:mro.request:mro.mro_request_form_view
 msgid "Confirm Request"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Consumed Parts"
 msgstr ""
 
@@ -129,7 +230,7 @@ msgstr ""
 
 #. module: mro
 #: model:ir.actions.act_window,name:mro.action_view_convert_order
-#: view:mro.convert.order:mro.view_convert_order
+#: model_terms:ir.ui.view,arch_db:mro.view_convert_order
 msgid "Convert to Task"
 msgstr ""
 
@@ -145,23 +246,25 @@ msgid "Create Maintenance Request"
 msgstr ""
 
 #. module: mro
-#: field:mro.convert.order,create_uid:0
-#: field:mro.order,create_uid:0
-#: field:mro.order.parts.line,create_uid:0
-#: field:mro.request.reject,create_uid:0
-#: field:mro.task,create_uid:0
-#: field:mro.task.parts.line,create_uid:0
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_order__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_task__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: mro
-#: field:mro.convert.order,create_date:0
-#: field:mro.order,create_date:0
-#: field:mro.order.parts.line,create_date:0
-#: field:mro.request,create_date:0
-#: field:mro.request.reject,create_date:0
-#: field:mro.task,create_date:0
-#: field:mro.task.parts.line,create_date:0
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_order__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_request__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_task__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__create_date
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__create_date
 msgid "Created on"
 msgstr ""
 
@@ -176,92 +279,89 @@ msgid "DRAFT"
 msgstr ""
 
 #. module: mro
-#: view:mro.request:mro.mro_request_tree_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_tree_view
 msgid "Date"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,message_last_post:0
-#: help:mro.request,message_last_post:0
-msgid "Date of the last message posted on the record."
-msgstr ""
-
-#. module: mro
-#: help:mro.request,requested_date:0
+#: model:ir.model.fields,help:mro.field_mro_request__requested_date
 msgid "Date requested by the customer for maintenance."
 msgstr ""
 
 #. module: mro
-#: field:mro.order,description:0
-#: field:mro.order.parts.line,name:0
-#: view:mro.request:mro.mro_request_form_view
-#: field:mro.request,description:0
-#: field:mro.task,name:0
-#: field:mro.task.parts.line,name:0
-#: view:website:mro.report_mro_order
+#: model:ir.model.fields,field_description:mro.field_mro_order__description
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__name
+#: model:ir.model.fields,field_description:mro.field_mro_request__description
+#: model:ir.model.fields,field_description:mro.field_mro_task__name
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__name
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
 msgid "Description"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Description for Documentation"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Description for Labor"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Description for Operations"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Description for Tools"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Description:"
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_order__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_request__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_task__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__display_name
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__display_name
+msgid "Display Name"
 msgstr ""
 
 #. module: mro
-#: view:mro.convert.order:mro.view_convert_order
+#: model_terms:ir.ui.view,arch_db:mro.view_convert_order
 msgid "Do you really want convert Maintenance Order to Task?"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Documentation"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,documentation_description:0
-#: field:mro.task,documentation_description:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__documentation_description
+#: model:ir.model.fields,field_description:mro.field_mro_task__documentation_description
 msgid "Documentation Description"
 msgstr ""
 
 #. module: mro
-#: model:mro.request,cause:mro.mro_request_1
-msgid "Don't work Pump"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 #: selection:mro.request,state:0
+#: selection:mro.workorder,state:0
 msgid "Done"
 msgstr ""
 
 #. module: mro
 #: selection:mro.request,state:0
+#: selection:mro.workorder,state:0
 msgid "Draft"
 msgstr ""
 
@@ -271,115 +371,163 @@ msgid "Execution"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: field:mro.order,date_execution:0
-#: field:mro.request,execution_date:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__date_execution
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_tree_view
 msgid "Execution Date"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_request
-msgid "Execution Date:"
-msgstr ""
-
-#. module: mro
-#: field:mro.order,message_follower_ids:0
-#: field:mro.request,message_follower_ids:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_follower_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_follower_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_follower_ids
 msgid "Followers"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_channel_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_channel_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_partner_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_partner_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Force Reservation"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: view:mro.request:mro.mro_request_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "Group By"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,message_summary:0
-#: help:mro.request,message_summary:0
-msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
-msgstr ""
-
-#. module: mro
-#: field:mro.convert.order,id:0
-#: field:mro.order,id:0
-#: field:mro.order.parts.line,id:0
-#: field:mro.request,id:0
-#: field:mro.request.reject,id:0
-#: field:mro.task,id:0
-#: field:mro.task.parts.line,id:0
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__id
+#: model:ir.model.fields,field_description:mro.field_mro_order__id
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__id
+#: model:ir.model.fields,field_description:mro.field_mro_request__id
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__id
+#: model:ir.model.fields,field_description:mro.field_mro_task__id
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__id
 msgid "ID"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,message_unread:0
-#: help:mro.request,message_unread:0
+#: model:ir.model.fields,help:mro.field_mro_order__message_unread
+#: model:ir.model.fields,help:mro.field_mro_request__message_unread
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_unread
 msgid "If checked new messages require your attention."
 msgstr ""
 
 #. module: mro
-#: field:mro.order,message_is_follower:0
-#: field:mro.request,message_is_follower:0
-msgid "Is a Follower"
+#: model:ir.model.fields,help:mro.field_mro_order__message_needaction
+#: model:ir.model.fields,help:mro.field_mro_request__message_needaction
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_needaction
+msgid "If checked, new messages require your attention."
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
-#: view:website:mro.report_mro_order
+#: model:ir.model.fields,help:mro.field_mro_order__message_has_error
+#: model:ir.model.fields,help:mro.field_mro_request__message_has_error
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: mro
+#: selection:mro.workorder,state:0
+msgid "In Process"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_is_follower
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_is_follower
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Labor"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,labor_description:0
-#: field:mro.task,labor_description:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__labor_description
+#: model:ir.model.fields,field_description:mro.field_mro_task__labor_description
 msgid "Labor Description"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,message_last_post:0
-#: field:mro.request,message_last_post:0
-msgid "Last Message Date"
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_order____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_request____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_task____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line____last_update
+#: model:ir.model.fields,field_description:mro.field_mro_workorder____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: mro
-#: field:mro.convert.order,write_uid:0
-#: field:mro.order,write_uid:0
-#: field:mro.order.parts.line,write_uid:0
-#: field:mro.request,write_uid:0
-#: field:mro.request.reject,write_uid:0
-#: field:mro.task,write_uid:0
-#: field:mro.task.parts.line,write_uid:0
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_order__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_request__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_task__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__write_uid
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: mro
-#: field:mro.convert.order,write_date:0
-#: field:mro.order,write_date:0
-#: field:mro.order.parts.line,write_date:0
-#: field:mro.request,write_date:0
-#: field:mro.request.reject,write_date:0
-#: field:mro.task,write_date:0
-#: field:mro.task.parts.line,write_date:0
+#: model:ir.model.fields,field_description:mro.field_mro_convert_order__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_order__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_request__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_task__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__write_date
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: mro
-#: view:asset.asset:mro.view_asset_asset_mro_buttons_from
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_main_attachment_id
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_main_attachment_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: mro
 #: model:ir.ui.menu,name:mro.menu_mro_maintenance
+#: model_terms:ir.ui.view,arch_db:mro.view_asset_asset_mro_buttons_from
+#: model:stock.location.route,name:mro.route_maintenance
 msgid "Maintenance"
 msgstr ""
 
 #. module: mro
-#: model:ir.actions.report.xml,name:mro.action_report_maintenance_order
+#: model:ir.model.fields,field_description:mro.field_asset_asset__maintenance_date
+msgid "Maintenance Date"
+msgstr ""
+
+#. module: mro
+#: model:ir.actions.report,name:mro.action_report_maintenance_order
 #: model:ir.model,name:mro.model_mro_order
-#: view:mro.order:mro.mro_order_form_view
-#: field:mro.order.parts.line,maintenance_id:0
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__maintenance_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__mo_ids
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Maintenance Order"
 msgstr ""
 
@@ -389,17 +537,17 @@ msgid "Maintenance Order confirmed"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Maintenance Order № :"
 msgstr ""
 
 #. module: mro
-#: code:addons/mro/asset.py:44
+#: code:addons/mro/asset.py:37
 #: model:ir.actions.act_window,name:mro.action_orders
 #: model:ir.ui.menu,name:mro.menu_mro_order
-#: view:mro.order:mro.mro_order_calendar_view
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.order:mro.mro_order_tree_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_calendar_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_tree_view
 #, python-format
 msgid "Maintenance Orders"
 msgstr ""
@@ -411,9 +559,9 @@ msgid "Maintenance Planned Parts"
 msgstr ""
 
 #. module: mro
-#: model:ir.actions.report.xml,name:mro.action_report_maintenance_request
+#: model:ir.actions.report,name:mro.action_report_maintenance_request
 #: model:ir.model,name:mro.model_mro_request
-#: view:mro.request:mro.mro_request_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
 msgid "Maintenance Request"
 msgstr ""
 
@@ -433,123 +581,222 @@ msgid "Maintenance Request sent"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_request
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
 msgid "Maintenance Request № :"
 msgstr ""
 
 #. module: mro
 #: model:ir.actions.act_window,name:mro.action_requests
 #: model:ir.ui.menu,name:mro.menu_mro_request
-#: view:mro.request:mro.mro_request_tree_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_tree_view
 msgid "Maintenance Requests"
 msgstr ""
 
 #. module: mro
 #: model:ir.model,name:mro.model_mro_task
-#: field:mro.task.parts.line,task_id:0
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__task_id
 msgid "Maintenance Task"
 msgstr ""
 
 #. module: mro
 #: model:ir.actions.act_window,name:mro.action_tasks
-#: view:mro.task:mro.mro_task_tree_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_tree_view
 msgid "Maintenance Tasks"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: field:mro.order,maintenance_type:0
-#: field:mro.task,maintenance_type:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__maintenance_type
+#: model:ir.model.fields,field_description:mro.field_mro_task__maintenance_type
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
 msgid "Maintenance Type"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Maintenance Type:"
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_has_error
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_has_error
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_has_error
+msgid "Message Delivery error"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,message_ids:0
-#: field:mro.request,message_ids:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_ids
 msgid "Messages"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,message_ids:0
-#: help:mro.request,message_ids:0
-msgid "Messages and communication history"
+#: model:ir.model.fields,field_description:mro.field_mro_order__meter_value_execution
+msgid "Meter Excecution"
 msgstr ""
 
 #. module: mro
-#: model:product.template,name:mro.product_product_mro_oil_product_template
-msgid "Oil"
+#: model:ir.model.fields,field_description:mro.field_mro_order__meter_value_scheduled
+msgid "Meter Scheduled"
 msgstr ""
 
 #. module: mro
-#: view:mro.request:mro.mro_request_search
+#: code:addons/mro/models/mro_workorder.py:40
+#: code:addons/mro/models/mro_workorder.py:52
+#: code:addons/mro/models/mro_workorder.py:53
+#, python-format
+msgid "New"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_date_deadline
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_date_deadline
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_summary
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_summary
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_type_id
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_type_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_needaction_counter
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_needaction_counter
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_has_error_counter
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_has_error_counter
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_has_error_counter
+msgid "Number of error"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__message_needaction_counter
+#: model:ir.model.fields,help:mro.field_mro_request__message_needaction_counter
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__message_has_error_counter
+#: model:ir.model.fields,help:mro.field_mro_request__message_has_error_counter
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__message_unread_counter
+#: model:ir.model.fields,help:mro.field_mro_request__message_unread_counter
+#: model:ir.model.fields,help:mro.field_mro_workorder__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "Open"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Operations"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,operations_description:0
-#: field:mro.task,operations_description:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__operations_description
+#: model:ir.model.fields,field_description:mro.field_mro_task__operations_description
 msgid "Operations Description"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_tree_view
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__date_order
 msgid "Order Date"
 msgstr ""
 
 #. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_workorder_form_view
+msgid "Orders"
+msgstr ""
+
+#. module: mro
+#: selection:mro.order,activity_state:0
+#: selection:mro.request,activity_state:0
+#: selection:mro.workorder,activity_state:0
+msgid "Overdue"
+msgstr ""
+
+#. module: mro
+#: model:ir.actions.act_window,name:mro.part_action
+msgid "Part"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__parts_id
+#: model:ir.model.fields,field_description:mro.field_mro_task__parts_lines
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__parts_id
 #: model:ir.ui.menu,name:mro.menu_maintenance_parts
 #: model:ir.ui.menu,name:mro.menu_maintenance_parts_parts
-#: view:mro.order:mro.mro_order_form_view
-#: field:mro.order.parts.line,parts_id:0
-#: view:mro.task:mro.mro_task_form_view
-#: field:mro.task,parts_lines:0
-#: field:mro.task.parts.line,parts_id:0
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.part_search_form_view
 #: model:product.category,name:mro.product_category_mro
 msgid "Parts"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model:ir.model.fields,field_description:mro.field_mro_order__parts_move_lines
+msgid "Parts Move Lines"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__parts_moved_lines
+msgid "Parts Moved Lines"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__parts_ready_lines
+msgid "Parts Ready Lines"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Parts to Consume"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,date_planned:0
+#: model_terms:ir.ui.view,arch_db:mro.part_search_form_view
+msgid "Parts your store in the inventory"
+msgstr ""
+
+#. module: mro
+#: selection:mro.order,activity_state:0
+#: selection:mro.request,activity_state:0
+#: selection:mro.workorder,activity_state:0
+msgid "Planned"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__date_planned
 msgid "Planned Date"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Planned Date:"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Planned Parts"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,parts_lines:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__parts_lines
 msgid "Planned parts"
-msgstr ""
-
-#. module: mro
-#: selection:mro.order,maintenance_type:0
-#: selection:mro.task,maintenance_type:0
-msgid "Predictive"
 msgstr ""
 
 #. module: mro
@@ -559,39 +806,27 @@ msgid "Preventive"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-#: view:website:mro.report_mro_request
-msgid "Printing date:"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: field:mro.order,problem_description:0
-#: view:website:mro.report_mro_order
-#: view:website:mro.report_mro_request
+#: model:ir.model.fields,field_description:mro.field_mro_order__problem_description
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_request
 msgid "Problem Description"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,procurement_group_id:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__procurement_group_id
 msgid "Procurement group"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Product"
+#: model:ir.model,name:mro.model_product_template
+msgid "Product Template"
 msgstr ""
 
 #. module: mro
-#: model:product.template,name:mro.product_product_mro_pump_product_template
-msgid "Pump"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: field:mro.order.parts.line,parts_qty:0
-#: field:mro.task.parts.line,parts_qty:0
-#: view:website:mro.report_mro_order
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__parts_qty
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__parts_qty
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Quantity"
 msgstr ""
 
@@ -601,35 +836,45 @@ msgid "READY TO MAINTENANCE"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
+#: model:ir.model.fields,field_description:mro.field_mro_request__execution_date
+msgid "Record Date"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_request__execution_meter
+msgid "Record Meter"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Recreate Picking"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,name:0
-#: field:mro.request,name:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__name
+#: model:ir.model.fields,field_description:mro.field_mro_request__name
 msgid "Reference"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,origin:0
+#: model:ir.model.fields,help:mro.field_mro_order__origin
 msgid "Reference of the document that generated this maintenance order."
 msgstr ""
 
 #. module: mro
-#: view:mro.request:mro.mro_request_form_view
-#: field:mro.request,reject_reason:0
-#: field:mro.request.reject,reject_reason:0
+#: model:ir.model.fields,field_description:mro.field_mro_request__reject_reason
+#: model:ir.model.fields,field_description:mro.field_mro_request_reject__reject_reason
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
 msgid "Reject Reason"
 msgstr ""
 
 #. module: mro
 #: model:ir.actions.act_window,name:mro.action_request_reject
 #: model:ir.model,name:mro.model_mro_request_reject
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
+#: model_terms:ir.ui.view,arch_db:mro.view_request_reject_wizard
 #: model:mail.message.subtype,name:mro.mt_asset_request_rejected
 #: model:mail.message.subtype,name:mro.mt_request_rejected
-#: view:mro.request:mro.mro_request_form_view
-#: view:mro.request.reject:mro.view_request_reject_wizard
 msgid "Reject Request"
 msgstr ""
 
@@ -639,93 +884,104 @@ msgid "Rejected"
 msgstr ""
 
 #. module: mro
-#: field:mro.request,requested_date:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__request_id
+msgid "Request"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_request__requested_date
 msgid "Requested Date"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_request
-msgid "Requested Date:"
-msgstr ""
-
-#. module: mro
-#: field:mro.request,create_uid:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__user_id
+#: model:ir.model.fields,field_description:mro.field_mro_request__create_uid
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__user_id
 msgid "Responsible"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: field:mro.order,date_scheduled:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__activity_user_id
+#: model:ir.model.fields,field_description:mro.field_mro_request__activity_user_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__date_scheduled
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_tree_view
 msgid "Scheduled Date"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Scheduled Date:"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
 msgid "Search Maintenance Order"
 msgstr ""
 
 #. module: mro
-#: view:mro.request:mro.mro_request_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "Search Maintenance Request"
 msgstr ""
 
 #. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_form_view
 #: model:mail.message.subtype,name:mro.mt_asset_request_sent
 #: model:mail.message.subtype,name:mro.mt_request_sent
-#: view:mro.request:mro.mro_request_form_view
 msgid "Send Request"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,origin:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__origin
 msgid "Source Document"
 msgstr ""
 
 #. module: mro
-#: view:website:mro.report_mro_order
-msgid "Source Document:"
-msgstr ""
-
-#. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Specify the documentation useful when execute this order..."
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Specify the jobs that need execute..."
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Specify the specialists needed for execute this order..."
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Specify the tools and mechanisms needed for execute this order..."
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: view:mro.request:mro.mro_request_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "State"
 msgstr ""
 
 #. module: mro
-#: view:asset.asset:mro.view_asset_search_mro
-#: field:mro.order,state:0
-#: field:mro.request,state:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__state
+#: model:ir.model.fields,field_description:mro.field_mro_request__state
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__state
+#: model_terms:ir.ui.view,arch_db:mro.view_asset_search_mro
 msgid "Status"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__activity_state
+#: model:ir.model.fields,help:mro.field_mro_request__activity_state
+#: model:ir.model.fields,help:mro.field_mro_workorder__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
 msgstr ""
 
 #. module: mro
@@ -734,66 +990,70 @@ msgid "Stock Move"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,message_summary:0
-#: field:mro.request,message_summary:0
-msgid "Summary"
-msgstr ""
-
-#. module: mro
-#: code:addons/mro/wizard/convert_order.py:52
-#: field:mro.order,task_id:0
+#: code:addons/mro/wizard/convert_order.py:43
+#: model:ir.model.fields,field_description:mro.field_mro_order__task_id
 #, python-format
 msgid "Task"
 msgstr ""
 
 #. module: mro
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Task Name"
 msgstr ""
 
 #. module: mro
 #: model:ir.ui.menu,name:mro.menu_maintenance_tasks
 #: model:ir.ui.menu,name:mro.menu_maintenance_tasks_tasks
-#: view:mro.task:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
 msgid "Tasks"
 msgstr ""
 
 #. module: mro
-#: model:mro.request,cause:mro.mro_request_2
-msgid "There is no light"
+#: selection:mro.order,activity_state:0
+#: selection:mro.request,activity_state:0
+#: selection:mro.workorder,activity_state:0
+msgid "Today"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: view:mro.task:mro.mro_task_form_view
-#: view:website:mro.report_mro_order
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_task_form_view
+#: model_terms:ir.ui.view,arch_db:mro.report_mro_order
 msgid "Tools"
 msgstr ""
 
 #. module: mro
-#: field:mro.order,tools_description:0
-#: field:mro.task,tools_description:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__tools_description
+#: model:ir.model.fields,field_description:mro.field_mro_task__tools_description
 msgid "Tools Description"
 msgstr ""
 
 #. module: mro
-#: view:mro.request:mro.mro_request_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "Undecided maintenance request"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_form_view
-#: field:mro.order.parts.line,parts_uom:0
-#: field:mro.task.parts.line,parts_uom:0
+#: model:ir.model.fields,field_description:mro.field_mro_order_parts_line__parts_uom
+#: model:ir.model.fields,field_description:mro.field_mro_task_parts_line__parts_uom
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_form_view
 msgid "Unit of Measure"
 msgstr ""
 
 #. module: mro
-#: view:mro.order:mro.mro_order_search
-#: field:mro.order,message_unread:0
-#: view:mro.request:mro.mro_request_search
-#: field:mro.request,message_unread:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_unread
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_unread
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_unread
+#: model_terms:ir.ui.view,arch_db:mro.mro_order_search
+#: model_terms:ir.ui.view,arch_db:mro.mro_request_search
 msgid "Unread Messages"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,field_description:mro.field_mro_order__message_unread_counter
+#: model:ir.model.fields,field_description:mro.field_mro_request__message_unread_counter
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__message_unread_counter
+msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: mro
@@ -802,38 +1062,60 @@ msgid "WAITING PARTS"
 msgstr ""
 
 #. module: mro
-#: model:mro.order,description:mro.mro_order_2
-#: model:mro.task,name:mro.mro_task_1
-msgid "Wash the truck"
+#: model:stock.rule,name:mro.rule_wh_asset
+msgid "WH: Stock -> Asset"
 msgstr ""
 
 #. module: mro
-#: help:mro.order,state:0
+#: model:ir.model.fields,field_description:mro.field_mro_order__website_message_ids
+#: model:ir.model.fields,field_description:mro.field_mro_request__website_message_ids
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__website_message_ids
+#: model:ir.model.fields,help:mro.field_mro_request__website_message_ids
+#: model:ir.model.fields,help:mro.field_mro_workorder__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: mro
+#: model:ir.model.fields,help:mro.field_mro_order__state
 msgid "When the maintenance order is created the status is set to 'Draft'.\n"
-"            If the order is confirmed the status is set to 'Waiting Parts'.\n"
-"            If the stock is available then the status is set to 'Ready to Maintenance'.\n"
-"            When the maintenance is over, the status is set to 'Done'."
+"        If the order is confirmed the status is set to 'Waiting Parts'.\n"
+"        If the stock is available then the status is set to 'Ready to Maintenance'.\n"
+"        When the maintenance is over, the status is set to 'Done'."
 msgstr ""
 
 #. module: mro
-#: help:mro.request,state:0
+#: model:ir.model.fields,help:mro.field_mro_request__state
 msgid "When the maintenance request is created the status is set to 'Draft'.\n"
-"            If the request is sent the status is set to 'Claim'.\n"
-"            If the request is confirmed the status is set to 'Execution'.\n"
-"            If the request is rejected the status is set to 'Rejected'.\n"
-"            When the maintenance is over, the status is set to 'Done'."
+"        If the request is sent the status is set to 'Claim'.\n"
+"        If the request is confirmed the status is set to 'Execution'.\n"
+"        If the request is rejected the status is set to 'Rejected'.\n"
+"        When the maintenance is over, the status is set to 'Done'."
 msgstr ""
 
 #. module: mro
-#: view:mro.convert.order:mro.view_convert_order
-#: view:mro.request.reject:mro.view_request_reject_wizard
+#: model:ir.model,name:mro.model_mro_workorder
+#: model:ir.model.fields,field_description:mro.field_mro_order__wo_id
+#: model:ir.model.fields,field_description:mro.field_mro_workorder__name
+msgid "Work Order"
+msgstr ""
+
+#. module: mro
+#: model:ir.actions.act_window,name:mro.action_workorders
+#: model:ir.ui.menu,name:mro.menu_mro_workorder
+#: model_terms:ir.ui.view,arch_db:mro.mro_workorder_calendar_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_workorder_form_view
+#: model_terms:ir.ui.view,arch_db:mro.mro_workorder_tree_view
+msgid "Work Orders"
+msgstr ""
+
+#. module: mro
+#: model_terms:ir.ui.view,arch_db:mro.view_convert_order
+#: model_terms:ir.ui.view,arch_db:mro.view_request_reject_wizard
 msgid "or"
-msgstr ""
-
-#. module: mro
-#: field:mro.order,parts_move_lines:0
-#: field:mro.order,parts_moved_lines:0
-#: field:mro.order,parts_ready_lines:0
-msgid "unknown"
 msgstr ""
 

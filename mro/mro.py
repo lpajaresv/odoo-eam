@@ -18,7 +18,7 @@ class mro_order(models.Model):
     """
     _name = 'mro.order'
     _description = 'Maintenance Order'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     STATE_SELECTION = [
         ('draft', 'DRAFT'),
@@ -66,9 +66,9 @@ class mro_order(models.Model):
     task_id = fields.Many2one('mro.task', 'Task', readonly=True, states={'draft': [('readonly', False)]})
     description = fields.Char('Description', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
     asset_id = fields.Many2one('asset.asset', 'Asset', required=True, readonly=True, states={'draft': [('readonly', False)]})
-    date_planned = fields.Datetime('Planned Date', required=True, readonly=True, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    date_scheduled = fields.Datetime('Scheduled Date', required=True, readonly=True, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    date_execution = fields.Datetime('Execution Date', required=True, states={'done':[('readonly',True)],'cancel':[('readonly',True)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
+    date_planned = fields.Datetime('Planned Date', required=False, readonly=True, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
+    date_scheduled = fields.Datetime('Scheduled Date', required=False, readonly=True, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]})
+    date_execution = fields.Datetime('Execution Date', required=False, states={'done':[('readonly',True)],'cancel':[('readonly',True)]})
     parts_lines = fields.One2many('mro.order.parts.line', 'maintenance_id', 'Planned parts',
         readonly=True, states={'draft':[('readonly',False)]})
     parts_ready_lines = fields.One2many('stock.move', compute='_get_available_parts')
@@ -85,6 +85,8 @@ class mro_order(models.Model):
     category_ids = fields.Many2many(related='asset_id.category_ids', string='Asset Category', readonly=True)
     wo_id = fields.Many2one('mro.workorder', 'Work Order', ondelete='cascade')
     request_id = fields.Many2one('mro.request', 'Request')
+    meter_value_scheduled = fields.Float('Meter Scheduled', required=False)
+    meter_value_execution = fields.Float('Meter Excecution', required=False)
 
     _order = 'date_execution'
 
@@ -94,20 +96,23 @@ class mro_order(models.Model):
             self.category_ids = self.asset_id.category_ids
         return {'domain': {'task_id': [('category_id', 'in', self.category_ids.ids),('maintenance_type','=',self.maintenance_type)]}}
 
-    @api.onchange('date_planned')
-    def onchange_planned_date(self):
-        self.date_scheduled = self.date_planned
+#COMENTADO POR LAPV
+#Debido a que como estaba programado esto, si se cambiaba una fecha, las otras 2 se igualaban a ésta, lo cual no es un comportamiento correcto.
+#Realmente no se requiere hacer nada cuando se cambia una fecha.
+    # @api.onchange('date_planned')
+    # def onchange_planned_date(self):
+    #     self.date_scheduled = self.date_planned
 
-    @api.onchange('date_scheduled')
-    def onchange_scheduled_date(self):
-        self.date_execution = self.date_scheduled
+    # @api.onchange('date_scheduled')
+    # def onchange_scheduled_date(self):
+    #     self.date_execution = self.date_scheduled
 
-    @api.onchange('date_execution')
-    def onchange_execution_date(self):
-        if self.state == 'draft':
-            self.date_planned = self.date_execution
-        else:
-            self.date_scheduled = self.date_execution
+    # @api.onchange('date_execution')
+    # def onchange_execution_date(self):
+    #     if self.state == 'draft':
+    #         self.date_planned = self.date_execution
+    #     else:
+    #         self.date_scheduled = self.date_execution
 
     @api.onchange('task_id')
     def onchange_task(self):
@@ -282,7 +287,7 @@ class mro_task_parts_line(models.Model):
 class mro_request(models.Model):
     _name = 'mro.request'
     _description = 'Maintenance Request'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     STATE_SELECTION = [
         ('draft', 'Draft'),
@@ -315,19 +320,20 @@ class mro_request(models.Model):
     cause = fields.Char('Cause', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
     description = fields.Text('Description', readonly=True, states={'draft': [('readonly', False)]})
     reject_reason = fields.Text('Reject Reason', readonly=True)
-    requested_date = fields.Datetime('Requested Date', required=True, readonly=True, states={'draft': [('readonly', False)]}, help="Date requested by the customer for maintenance.", default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    execution_date = fields.Datetime('Execution Date', required=True, readonly=True, states={'draft':[('readonly',False)],'claim':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
+    requested_date = fields.Datetime('Requested Date', required=False, readonly=True, states={'draft': [('readonly', False)]}, help="Date requested by the customer for maintenance.", default=time.strftime('%Y-%m-%d %H:%M:%S'))
+    execution_date = fields.Datetime('Record Date', required=True, readonly=True, states={'draft':[('readonly',False)],'claim':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
     breakdown = fields.Boolean('Breakdown', readonly=True, states={'draft': [('readonly', False)]}, default=False)
     create_uid = fields.Many2one('res.users', 'Responsible')
+    execution_meter = fields.Float('Record Meter', required=False)
 
-    @api.onchange('requested_date')
-    def onchange_requested_date(self):
-        self.execution_date = self.requested_date
+    # @api.onchange('requested_date')
+    # def onchange_requested_date(self):
+    #     self.execution_date = self.requested_date
 
-    @api.onchange('execution_date','state','breakdown')
-    def onchange_execution_date(self):
-        if self.state == 'draft' and not self.breakdown:
-            self.requested_date = self.execution_date
+    # @api.onchange('execution_date','state','breakdown')
+    # def onchange_execution_date(self):
+    #     if self.state == 'draft' and not self.breakdown:
+    #         self.requested_date = self.execution_date
 
     def action_send(self):
         value = {'state': 'claim'}
@@ -342,8 +348,8 @@ class mro_request(models.Model):
         for request in self:
             order_id = order.create({
                 'date_planned':request.requested_date,
-                'date_scheduled':request.requested_date,
-                'date_execution':request.requested_date,
+#                'date_scheduled':request.requested_date,
+#               'date_execution':request.requested_date,
                 'origin': request.name,
                 'state': 'draft',
                 'maintenance_type': 'bm',
