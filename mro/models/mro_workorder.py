@@ -12,7 +12,7 @@ from odoo import api, fields, models, _
 class MroWorkOrder(models.Model):
     _name = 'mro.workorder'
     _description = 'Work Order'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     STATE_SELECTION = [
         ('draft', 'Draft'),

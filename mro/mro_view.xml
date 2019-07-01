@@ -53,8 +53,9 @@
                                 <field name="breakdown"/>
                             </group>
                             <group>
-                                <field name="requested_date" attrs="{'invisible':[('breakdown','=',True),('state','=','draft')],'readonly':[('state','!=','draft')]}"/>
                                 <field name="execution_date"/>
+                                <field name="execution_meter"/>
+                                <field name="requested_date" attrs="{'invisible':[('breakdown','=',True),('state','=','draft')],'readonly':[('state','!=','draft')]}"/>
                             </group>
                         </group>
                         <group string="Reject Reason" states="reject">
@@ -66,6 +67,7 @@
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
                         <field name="message_ids" widget="mail_thread"/>
                     </div>
                 </form>
@@ -116,7 +118,8 @@
                 <tree fonts="bold:message_unread==True" string="Maintenance Orders">
                     <field name="message_unread" invisible="1"/>
                     <field name="name"/>
-                    <field name="date_execution" string="Order Date" widget="date"/>
+                    <field name="date_scheduled" string="Scheduled Date" widget="date"/>
+                    <field name="date_execution" string="Execution Date" widget="date"/>
                     <field name="asset_id"/>
                     <field name="maintenance_type"/>
                     <field name="description"/>
@@ -170,7 +173,9 @@
                             <group>
                                 <field name="date_planned"/>
                                 <field name="date_scheduled"/>
+                                <field name="meter_value_scheduled"/>
                                 <field name="date_execution"/>
+                                <field name="meter_value_execution"/>
                                 <field name="user_id"/>
                                 <field name="origin"/>
                             </group>
@@ -246,6 +251,7 @@
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
                         <field name="message_ids" widget="mail_thread"/>
                     </div>
                 </form>
