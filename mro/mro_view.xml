@@ -55,7 +55,7 @@
                             <group>
                                 <field name="execution_date"/>
                                 <field name="execution_meter"/>
-                                <field name="requested_date" attrs="{'invisible':[('breakdown','=',True),('state','=','draft')],'readonly':[('state','!=','draft')]}"/>
+                                <field name="requested_date" attrs="{'readonly':[('state','!=','draft')]}"/> 
                             </group>
                         </group>
                         <group string="Reject Reason" states="reject">

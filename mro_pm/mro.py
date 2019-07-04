@@ -15,9 +15,9 @@ class mro_order(models.Model):
     _inherit = 'mro.order'
 
     MAINTENANCE_TYPE_SELECTION = [
-        ('bm', 'Breakdown'),
-        ('cm', 'Corrective'),
-        ('pm', 'Preventive')
+        ('bm', 'Non-routine Corrective'),
+        ('cm', 'Routine Corrective'),
+        ('pm', 'Routine Preventive')
     ]
 
     maintenance_type = fields.Selection(MAINTENANCE_TYPE_SELECTION, 'Maintenance Type', required=True, readonly=True, states={'draft': [('readonly', False)]})
@@ -222,8 +222,8 @@ class mro_task(models.Model):
     _inherit = 'mro.task'
 
     MAINTENANCE_TYPE_SELECTION = [
-        ('cm', 'Corrective'),
-        ('pm', 'Preventive')
+        ('cm', 'Routine Corrective'),
+        ('pm', 'Routine Preventive')
     ]
 
     maintenance_type = fields.Selection(MAINTENANCE_TYPE_SELECTION, 'Maintenance Type', required=True)

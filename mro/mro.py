@@ -29,8 +29,8 @@ class mro_order(models.Model):
     ]
 
     MAINTENANCE_TYPE_SELECTION = [
-        ('bm', 'Breakdown'),
-        ('cm', 'Corrective')
+        ('bm', 'Non-routine Corrective'),
+        ('cm', 'Routine Corrective')
     ]
 
     @api.multi
@@ -338,8 +338,8 @@ class mro_request(models.Model):
     def action_send(self):
         value = {'state': 'claim'}
         for request in self:
-            if request.breakdown:
-                value['requested_date'] = time.strftime('%Y-%m-%d %H:%M:%S')
+#            if request.breakdown:
+#                value['requested_date'] = time.strftime('%Y-%m-%d %H:%M:%S')
             request.write(value)
 
     def action_confirm(self):
