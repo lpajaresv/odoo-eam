@@ -88,7 +88,7 @@ class mro_order(models.Model):
     meter_value_scheduled = fields.Float('Meter Scheduled', required=False)
     meter_value_execution = fields.Float('Meter Excecution', required=False)
 
-    _order = 'date_execution'
+    _order = 'name desc'
 
     @api.onchange('asset_id','maintenance_type')
     def onchange_asset(self):
@@ -325,6 +325,8 @@ class mro_request(models.Model):
     breakdown = fields.Boolean('Breakdown', readonly=True, states={'draft': [('readonly', False)]}, default=False)
     create_uid = fields.Many2one('res.users', 'Responsible')
     execution_meter = fields.Float('Record Meter', required=False)
+
+    _order = 'name desc'
 
     # @api.onchange('requested_date')
     # def onchange_requested_date(self):
