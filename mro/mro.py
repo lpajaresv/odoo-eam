@@ -152,7 +152,7 @@ class mro_order(models.Model):
         return True
 
     def action_done(self):
-        self.write({'state': 'done', 'date_execution': time.strftime('%Y-%m-%d %H:%M:%S')})
+        self.write({'state': 'done'})
         for order in self:
             if order.request_id: order.request_id.action_done()
         return True
@@ -169,7 +169,9 @@ class mro_order(models.Model):
         return res
 
     def force_done(self):
-        self.write({'state': 'done', 'date_execution': time.strftime('%Y-%m-%d %H:%M:%S')})
+        if not self.date_execution:
+            self.date_execution =  time.strftime('%Y-%m-%d %H:%M:%S')
+        self.write({'state': 'done'})
         for order in self:
             if order.request_id: order.request_id.action_done()
         return True
@@ -186,15 +188,15 @@ class mro_order(models.Model):
 
     @api.multi
     def write(self, vals):
-        if vals.get('date_execution') and not vals.get('state'):
-            # constraint for calendar view
-            for order in self:
-                if order.state == 'draft':
-                    vals['date_planned'] = vals['date_execution']
-                    vals['date_scheduled'] = vals['date_execution']
-                elif order.state in ('released','ready'):
-                    vals['date_scheduled'] = vals['date_execution']
-                else: del vals['date_execution']
+        #if vals.get('date_execution') and not vals.get('state'):
+        #    # constraint for calendar view
+        #    for order in self:
+        #        if order.state == 'draft':
+        #            vals['date_planned'] = vals['date_execution']
+        #            vals['date_scheduled'] = vals['date_execution']
+        #        elif order.state in ('released','ready'):
+        #            vals['date_scheduled'] = vals['date_execution']
+        #        else: del vals['date_execution']
         return super(mro_order, self).write(vals)
 
 
