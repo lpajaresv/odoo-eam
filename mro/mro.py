@@ -79,7 +79,7 @@ class mro_order(models.Model):
     operations_description = fields.Text('Operations Description',translate=True)
     documentation_description = fields.Text('Documentation Description',translate=True)
     problem_description = fields.Text('Problem Description')
-    user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self._uid)
+    user_id = fields.Many2one('res.users', 'Responsible')#, default=lambda self: self._uid)
     company_id = fields.Many2one('res.company','Company',required=True, readonly=True, states={'draft':[('readonly',False)]}, default=lambda self: self.env['res.company']._company_default_get('mro.order'))
     procurement_group_id = fields.Many2one('procurement.group', 'Procurement group', copy=False)
     category_ids = fields.Many2many(related='asset_id.category_ids', string='Asset Category', readonly=True)
@@ -87,6 +87,9 @@ class mro_order(models.Model):
     request_id = fields.Many2one('mro.request', 'Request')
     meter_value_scheduled = fields.Float('Meter Scheduled', required=False)
     meter_value_execution = fields.Float('Meter Excecution', required=False)
+    symptom = fields.Char('Symptom', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
+    cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
+    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
 
     _order = 'name desc'
 
@@ -127,6 +130,9 @@ class mro_order(models.Model):
                 }])
         self.parts_lines = new_parts_lines
         self.description = task.name
+        self.symptom = " "
+        self.cause = " "
+        self.system = " "
         self.tools_description = task.tools_description
         self.labor_description = task.labor_description
         self.operations_description = task.operations_description
@@ -319,7 +325,6 @@ class mro_request(models.Model):
         If the request is rejected the status is set to 'Rejected'.\n\
         When the maintenance is over, the status is set to 'Done'.", track_visibility='onchange', default='draft')
     asset_id = fields.Many2one('asset.asset', 'Asset', required=True, readonly=True, states={'draft': [('readonly', False)]})
-    cause = fields.Char('Cause', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
     description = fields.Text('Description', readonly=True, states={'draft': [('readonly', False)]})
     reject_reason = fields.Text('Reject Reason', readonly=True)
     requested_date = fields.Datetime('Requested Date', required=False, readonly=True, states={'draft': [('readonly', False)]}, help="Date requested by the customer for maintenance.", default=time.strftime('%Y-%m-%d %H:%M:%S'))
@@ -327,7 +332,11 @@ class mro_request(models.Model):
     breakdown = fields.Boolean('Breakdown', readonly=True, states={'draft': [('readonly', False)]}, default=False)
     create_uid = fields.Many2one('res.users', 'Responsible')
     execution_meter = fields.Float('Record Meter', required=False)
-
+    symptom = fields.Char('Symptom', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
+    cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
+    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
+    solution = fields.Char('Solution', size=64, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
+    reporter_uid = fields.Many2one('res.users', 'Reported by', default=lambda self: self._uid)
     _order = 'name desc'
 
     # @api.onchange('requested_date')
@@ -349,6 +358,9 @@ class mro_request(models.Model):
     def action_confirm(self):
         order = self.env['mro.order']
         order_id = False
+#        vdesc = self.request.solution
+#        if vdesc is None: vdesc = self.request.symptom 
+
         for request in self:
             order_id = order.create({
                 'date_planned':request.requested_date,
@@ -358,15 +370,20 @@ class mro_request(models.Model):
                 'state': 'draft',
                 'maintenance_type': 'bm',
                 'asset_id': request.asset_id.id,
-                'description': request.cause,
+                'description': request.symptom if not request.solution else request.solution,
+                'symptom': request.symptom,
+                'cause': request.cause,
+                'system': request.system,
                 'problem_description': request.description,
+#                'user_id': request.reporter_uid,
                 'request_id': request.id,
             })
         self.write({'state': 'run'})
         return order_id.id
 
     def action_done(self):
-        self.write({'state': 'done', 'execution_date': time.strftime('%Y-%m-%d %H:%M:%S')})
+        self.write({'state': 'done'})
+        #, 'execution_date': time.strftime('%Y-%m-%d %H:%M:%S')})
         return True
 
     def action_reject(self):
