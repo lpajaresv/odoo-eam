@@ -15,7 +15,7 @@
             parent="base.menu_mro_root"
             sequence="1"/>
 
-        <!-- Maintenance request menu -->
+        <!-- Maintenance Request menu -->
         <record id="mro_request_tree_view" model="ir.ui.view">
             <field name="name">mro.request.tree</field>
             <field name="model">mro.request</field>
@@ -62,7 +62,8 @@
                                 <field name="breakdown"/>
                                 <field name="execution_date"/>
                                 <field name="execution_meter"/>
-                                <field name="requested_date" attrs="{'readonly':[('state','!=','draft')]}"/> 
+                                <field name="requested_date"/> 
+                                <!-- #attrs="{'readonly':[('state','!=','draft')]}"/> -->
                                 <field name="reporter_uid"/>
                             </group>
                         </group>
@@ -118,7 +119,7 @@
             parent="menu_mro_maintenance"
             sequence="1"/>
 
-        <!-- Maintenance order menu -->
+        <!-- Maintenance Order menu -->
         <record id="mro_order_tree_view" model="ir.ui.view">
             <field name="name">mro.order.tree</field>
             <field name="model">mro.order</field>

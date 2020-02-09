@@ -61,14 +61,14 @@ class mro_order(models.Model):
         help="When the maintenance order is created the status is set to 'Draft'.\n\
         If the order is confirmed the status is set to 'Waiting Parts'.\n\
         If the stock is available then the status is set to 'Ready to Maintenance'.\n\
-        When the maintenance is over, the status is set to 'Done'.", default='draft')
+        When the maintenance is over, the status is set to 'Done'.", track_visibility='onchange', default='draft')
     maintenance_type = fields.Selection(MAINTENANCE_TYPE_SELECTION, 'Maintenance Type', required=True, readonly=True, states={'draft': [('readonly', False)]}, default='bm')
     task_id = fields.Many2one('mro.task', 'Task', readonly=True, states={'draft': [('readonly', False)]})
-    description = fields.Char('Description', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
+    description = fields.Char('Description', size=64, translate=True, required=True, readonly=False, states={'draft': [('readonly', False)]}) ##RO
     asset_id = fields.Many2one('asset.asset', 'Asset', required=True, readonly=True, states={'draft': [('readonly', False)]})
-    date_planned = fields.Datetime('Planned Date', required=False, readonly=True, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    date_scheduled = fields.Datetime('Scheduled Date', required=False, readonly=True, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]})
-    date_execution = fields.Datetime('Execution Date', required=False, states={'done':[('readonly',True)],'cancel':[('readonly',True)]})
+    date_planned = fields.Datetime('Planned Date', required=False, readonly=False, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))##RO
+    date_scheduled = fields.Datetime('Scheduled Date', required=False, readonly=False, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]})##RO
+    date_execution = fields.Datetime('Execution Date', required=False) ##RO, states={'done':[('readonly',True)],'cancel':[('readonly',True)]})
     parts_lines = fields.One2many('mro.order.parts.line', 'maintenance_id', 'Planned parts',
         readonly=True, states={'draft':[('readonly',False)]})
     parts_ready_lines = fields.One2many('stock.move', compute='_get_available_parts')
@@ -89,7 +89,7 @@ class mro_order(models.Model):
     meter_value_execution = fields.Float('Meter Excecution', required=False)
     symptom = fields.Char('Symptom', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
     cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
-    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
+    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
 
     _order = 'name desc'
 
@@ -325,17 +325,17 @@ class mro_request(models.Model):
         If the request is rejected the status is set to 'Rejected'.\n\
         When the maintenance is over, the status is set to 'Done'.", track_visibility='onchange', default='draft')
     asset_id = fields.Many2one('asset.asset', 'Asset', required=True, readonly=True, states={'draft': [('readonly', False)]})
-    description = fields.Text('Description', readonly=True, states={'draft': [('readonly', False)]})
+    description = fields.Text('Description', readonly=False, states={'draft': [('readonly', False)]})##RO
     reject_reason = fields.Text('Reject Reason', readonly=True)
-    requested_date = fields.Datetime('Requested Date', required=False, readonly=True, states={'draft': [('readonly', False)]}, help="Date requested by the customer for maintenance.", default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    execution_date = fields.Datetime('Record Date', required=True, readonly=True, states={'draft':[('readonly',False)],'claim':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))
-    breakdown = fields.Boolean('Breakdown', readonly=True, states={'draft': [('readonly', False)]}, default=False)
+    requested_date = fields.Datetime('Requested Date', required=False, readonly=False, states={'draft': [('readonly', False)]}, help="Date requested by the customer for maintenance.", default=time.strftime('%Y-%m-%d %H:%M:%S'))  ##RO
+    execution_date = fields.Datetime('Record Date', required=True, readonly=False, states={'draft':[('readonly',False)],'claim':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))  ##RO
+    breakdown = fields.Boolean('Breakdown', readonly=False, states={'draft': [('readonly', False)]}, default=False)##RO
     create_uid = fields.Many2one('res.users', 'Responsible')
     execution_meter = fields.Float('Record Meter', required=False)
-    symptom = fields.Char('Symptom', size=64, translate=True, required=True, readonly=True, states={'draft': [('readonly', False)]})
-    cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
-    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
-    solution = fields.Char('Solution', size=64, translate=True, required=False, readonly=True, states={'draft': [('readonly', False)]})
+    symptom = fields.Char('Symptom', size=64, translate=True, required=True, readonly=False, states={'draft': [('readonly', False)]}) ##RO
+    cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})##RO
+    system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})##RO
+    solution = fields.Char('Solution', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})##RO
     reporter_uid = fields.Many2one('res.users', 'Reported by', default=lambda self: self._uid)
     _order = 'name desc'
 

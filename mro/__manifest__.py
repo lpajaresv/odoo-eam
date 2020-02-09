@@ -35,7 +35,7 @@ Required modules:
     'website': 'http://codup.com',
     'category': 'Industries',
     'sequence': 0,
-    'depends': ['asset','purchase'],
+    'depends': ['asset','purchase', 'mail'],
     'demo': ['mro_demo.xml'],
     'data': [
         'security/mro_security.xml',
