@@ -32,7 +32,11 @@ class mro_order(models.Model):
         ('bm', 'Non-routine Corrective'),
         ('cm', 'Routine Corrective')
     ]
-
+    PRIORITY_SELECTION = [
+        ('0', 'Low'),
+        ('1', 'Medium'),
+        ('2', 'High')
+    ]
     @api.multi
     def _track_subtype(self, init_values):
         self.ensure_one()
@@ -90,7 +94,7 @@ class mro_order(models.Model):
     symptom = fields.Char('Symptom', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
     cause = fields.Char('Cause', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
     system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
-
+    priority = fields.Selection(PRIORITY_SELECTION, 'Priority')
     _order = 'name desc'
 
     @api.onchange('asset_id','maintenance_type')
@@ -306,6 +310,12 @@ class mro_request(models.Model):
         ('cancel', 'Canceled')
     ]
 
+    PRIORITY_SELECTION = [
+        ('0', 'Low'),
+        ('1', 'Medium'),
+        ('2', 'High')
+    ]
+
     @api.multi
     def _track_subtype(self, init_values):
         self.ensure_one()
@@ -337,6 +347,7 @@ class mro_request(models.Model):
     system = fields.Char('System/Component', size=32, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})##RO
     solution = fields.Char('Solution', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})##RO
     reporter_uid = fields.Many2one('res.users', 'Reported by', default=lambda self: self._uid)
+    priority = fields.Selection(PRIORITY_SELECTION, 'Priority')
     _order = 'name desc'
 
     # @api.onchange('requested_date')
@@ -375,6 +386,7 @@ class mro_request(models.Model):
                 'cause': request.cause,
                 'system': request.system,
                 'problem_description': request.description,
+                'priority': request.priority,
 #                'user_id': request.reporter_uid,
                 'request_id': request.id,
             })
