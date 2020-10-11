@@ -91,9 +91,9 @@
             <field name="model">mro.request</field>
             <field name="arch" type="xml">
                 <search string="Search Maintenance Request">
+                    <field name="asset_id"/>
                     <field name="state"/>
                     <field name="name"/>
-                    <field name="asset_id"/>
                     <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
                     <separator/>
                     <filter icon="terp-document-new" name="open" string="Open" domain="['|',('state','in',('draft','claim')),('message_unread','=',True)]" help="Undecided maintenance request"/>
@@ -281,10 +281,10 @@
             <field name="model">mro.order</field>
             <field name="arch" type="xml">
                 <search string="Search Maintenance Order">
-                    <field name="name"/>
-                    <field name="maintenance_type"/>
                     <field name="asset_id"/>
+                    <field name="maintenance_type"/>
                     <field name="category_ids"/>
+                    <field name="name"/>
                     <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
                     <separator/>
                     <group expand="0" string="Group By">

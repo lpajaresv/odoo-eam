@@ -49,9 +49,9 @@
                             </group>
                         </group>
                         <notebook>
-                            <page name="orders" string="Orders">
+                            <page name="orders" string="Maintenance Orders">
                                 <group>
-                                    <field name="mo_ids" domain="[('state','=','draft'),('wo_id','=',False),('user_id','=',user_id)]" nolabel="1" widget="many2many" attrs="{'readonly': [('state','in',['in_process','done'])]}"/>
+                                    <field name="mo_ids" domain="[('state','in',['draft','released','ready']),('wo_id','=',False)]" nolabel="1" widget="many2many" attrs="{'readonly': [('state','in',['done'])]}"/>
                                 </group>
                             </page>
                         </notebook>
