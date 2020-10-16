@@ -74,7 +74,7 @@ class mro_order(models.Model):
     date_scheduled = fields.Datetime('Scheduled Date', required=False, readonly=False, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]})##RO
     date_execution = fields.Datetime('Execution Date', required=False) ##RO, states={'done':[('readonly',True)],'cancel':[('readonly',True)]})
     parts_lines = fields.One2many('mro.order.parts.line', 'maintenance_id', 'Planned parts',
-        readonly=True, states={'draft':[('readonly',False)]})
+        readonly=True, states={'draft':[('readonly',False)], 'released':[('readonly',False)]}) # Agregré el estado released a readonly false.
     parts_ready_lines = fields.One2many('stock.move', compute='_get_available_parts')
     parts_move_lines = fields.One2many('stock.move', compute='_get_available_parts')
     parts_moved_lines = fields.One2many('stock.move', compute='_get_available_parts')
@@ -374,8 +374,8 @@ class mro_request(models.Model):
 
         for request in self:
             order_id = order.create({
-                'date_planned':request.requested_date,
-#                'date_scheduled':request.requested_date,
+                'date_planned':request.execution_date,
+                'date_scheduled':request.requested_date,
 #               'date_execution':request.requested_date,
                 'origin': request.name,
                 'state': 'draft',

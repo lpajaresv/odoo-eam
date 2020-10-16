@@ -92,6 +92,7 @@
             <field name="arch" type="xml">
                 <search string="Search Maintenance Request">
                     <field name="asset_id"/>
+                    <field name="symptom"/>
                     <field name="state"/>
                     <field name="name"/>
                     <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
@@ -130,8 +131,9 @@
                 <tree fonts="bold:message_unread==True" string="Maintenance Orders">
                     <field name="message_unread" invisible="1"/>
                     <field name="name"/>
-                    <field name="date_scheduled" string="Scheduled Date" widget="date"/>
+                    <field name="date_planned" string="Register Date" widget="date"/>
                     <field name="date_execution" string="Execution Date" widget="date"/>
+                    <field name="meter_value_execution"/>
                     <field name="asset_id"/>
                     <field name="priority"/>
                     <field name="maintenance_type"/>
@@ -189,7 +191,7 @@
                                 <field name="priority"/> 
                             </group>
                             <group>
-                                <field name="date_planned"/>
+                                <field name="date_planned" string="Register Date"/>
                                 <field name="date_scheduled"/>
                                 <field name="meter_value_scheduled"/>
                                 <field name="date_execution"/>
@@ -282,6 +284,7 @@
             <field name="arch" type="xml">
                 <search string="Search Maintenance Order">
                     <field name="asset_id"/>
+                    <field name="description"/>
                     <field name="maintenance_type"/>
                     <field name="category_ids"/>
                     <field name="name"/>
