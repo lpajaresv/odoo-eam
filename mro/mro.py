@@ -70,7 +70,7 @@ class mro_order(models.Model):
     task_id = fields.Many2one('mro.task', 'Task', readonly=True, states={'draft': [('readonly', False)]})
     description = fields.Char('Description', size=64, translate=True, required=True, readonly=False, states={'draft': [('readonly', False)]}) ##RO
     asset_id = fields.Many2one('asset.asset', 'Asset', required=True, readonly=True, states={'draft': [('readonly', False)]})
-    date_planned = fields.Datetime('Planned Date', required=False, readonly=False, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))##RO
+    date_planned = fields.Datetime('Report Date', required=False, readonly=False, states={'draft':[('readonly',False)]}, default=time.strftime('%Y-%m-%d %H:%M:%S'))##RO
     date_scheduled = fields.Datetime('Scheduled Date', required=False, readonly=False, states={'draft':[('readonly',False)],'released':[('readonly',False)],'ready':[('readonly',False)]})##RO
     date_execution = fields.Datetime('Execution Date', required=False) ##RO, states={'done':[('readonly',True)],'cancel':[('readonly',True)]})
     parts_lines = fields.One2many('mro.order.parts.line', 'maintenance_id', 'Planned parts',
@@ -89,6 +89,7 @@ class mro_order(models.Model):
     category_ids = fields.Many2many(related='asset_id.category_ids', string='Asset Category', readonly=True)
     wo_id = fields.Many2one('mro.workorder', 'Work Order', ondelete='cascade')
     request_id = fields.Many2one('mro.request', 'Request')
+    meter_value_planned = fields.Float('Meter Report', required=False)
     meter_value_scheduled = fields.Float('Meter Scheduled', required=False)
     meter_value_execution = fields.Float('Meter Excecution', required=False)
     symptom = fields.Char('Symptom', size=64, translate=True, required=False, readonly=False, states={'draft': [('readonly', False)]})
@@ -375,6 +376,7 @@ class mro_request(models.Model):
         for request in self:
             order_id = order.create({
                 'date_planned':request.execution_date,
+                'meter_value_planned': request.execution_meter,
                 'date_scheduled':request.requested_date,
 #               'date_execution':request.requested_date,
                 'origin': request.name,
